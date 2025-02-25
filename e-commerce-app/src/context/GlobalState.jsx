@@ -2,8 +2,8 @@ import { createContext, useReducer } from "react";
 import reducer from "./reducer";
 
 const initialState = {
-  products: [],  // Stores all products
-  cart: [],      // Stores cart items
+  products: [],  
+  cart: [],      
 };
 
 export const GlobalContext = createContext(initialState);

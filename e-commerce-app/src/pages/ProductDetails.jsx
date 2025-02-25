@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { getProducts } from "../api/fakeStoreApi";
 import { CartContext } from "../context/CartContext";
 
+
 const ProductDetails = () => {
   const { id } = useParams();
   const { dispatch } = useContext(CartContext);

@@ -1,43 +1,27 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { getProducts } from "../api/fakeStoreApi";
 import ProductCard from "../components/ProductCard";
 import CategoryFilter from "../components/CategoryFilter";
-import "../index.css"; // Ensures global styles are applied
 
 const HomePage = () => {
-  const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [category, setCategory] = useState("all");
 
-  useEffect(() => {
-    getProducts().then((data) => {
-      setProducts(data);
+  const { data: products, error, isLoading } = useQuery({
+    queryKey: ["products", category],
+    queryFn: () => getProducts(category),
+  });
 
-      // Extract unique categories
-      const uniqueCategories = [...new Set(data.map((product) => product.category))];
-      setCategories(uniqueCategories);
-    });
-  }, []);
-
-  // Filter products based on selected category
-  const filteredProducts = selectedCategory
-    ? products.filter((product) => product.category === selectedCategory)
-    : products;
+  if (isLoading) return <p>Loading products...</p>;
+  if (error) return <p>Error fetching products: {error.message}</p>;
 
   return (
-    <div className="homepage-container">
-      <CategoryFilter 
-        categories={categories} 
-        selectedCategory={selectedCategory} 
-        onSelectCategory={setSelectedCategory} 
-      />
-
-      <div className="product-grid">
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map((product) => <ProductCard key={product.id} product={product} />)
-        ) : (
-          <p className="no-products">No products found.</p>
-        )}
+    <div>
+      <CategoryFilter setCategory={setCategory} />
+      <div className="product-list">
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
       </div>
     </div>
   );

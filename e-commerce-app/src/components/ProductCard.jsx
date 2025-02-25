@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate(); 
 
   return (
     <div className="product-card">
