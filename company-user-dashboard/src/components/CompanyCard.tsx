@@ -5,14 +5,14 @@ interface Company {
   name: string;
   domain: string;
   marketCap: number;
-  logo?: string; // Optional logo URL
+  logo?: string; 
 }
 
 const CompanyCard = ({ company }: { company: Company }) => {
   return (
     <Card sx={{ minWidth: 275, maxWidth: 300, cursor: 'pointer' }}>
       <CardContent>
-        {/* Company Logo */}
+        
         {company.logo && (
           <Avatar
             src={company.logo}
@@ -21,15 +21,15 @@ const CompanyCard = ({ company }: { company: Company }) => {
           />
         )}
 
-        {/* Company Name */}
+        
         <Typography variant="h6" component="div">
           {company.name}
         </Typography>
 
-        {/* Company Domain */}
+        
         <Typography color="text.secondary">{company.domain}</Typography>
 
-        {/* Company Market Cap */}
+        
         <Typography variant="body2">
           Market Cap: ${company.marketCap.toLocaleString()}
         </Typography>

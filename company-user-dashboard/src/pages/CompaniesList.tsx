@@ -10,21 +10,21 @@ interface Company {
   name: string;
   domain: string;
   marketCap: number;
-  logo?: string; // Optional logo URL
+  logo?: string; 
 }
 
-// Define the state for filtering
+
 interface FilterState {
   minMarketCap: number | '';
   maxMarketCap: number | '';
 }
 
-// Define actions for updating the filter state
+
 type FilterAction =
   | { type: 'SET_MIN_MARKET_CAP'; payload: number | '' }
   | { type: 'SET_MAX_MARKET_CAP'; payload: number | '' };
 
-// Reducer function to handle state updates
+
 const filterReducer = (state: FilterState, action: FilterAction): FilterState => {
   switch (action.type) {
     case 'SET_MIN_MARKET_CAP':
@@ -39,13 +39,13 @@ const filterReducer = (state: FilterState, action: FilterAction): FilterState =>
 const CompaniesList = () => {
   const navigate = useNavigate();
 
-  // Initialize state for filtering
+  
   const [filterState, dispatch] = useReducer(filterReducer, {
     minMarketCap: '',
     maxMarketCap: '',
   });
 
-  // Fetch all companies
+  
   const {
     data: companies,
     isLoading,
@@ -59,12 +59,12 @@ const CompaniesList = () => {
     },
   });
 
-  // Handle click on a company card
+  
   const handleCompanyClick = (companyId: number) => {
-    navigate(`/companies/${companyId}`); // Navigate to the company details page
+    navigate(`/companies/${companyId}`); 
   };
 
-  // Filter companies based on market cap range
+  
   const filteredCompanies = companies?.filter((company: Company) => {
     const { minMarketCap, maxMarketCap } = filterState;
     const marketCap = company.marketCap;
@@ -97,7 +97,7 @@ const CompaniesList = () => {
         Companies List
       </Typography>
 
-      {/* Filter inputs */}
+      
       <Box display="flex" gap={2} mb={4}>
         <TextField
           label="Min Market Cap"
@@ -123,7 +123,7 @@ const CompaniesList = () => {
         />
       </Box>
 
-      {/* Display filtered companies */}
+      
       <Box display="flex" flexWrap="wrap" gap={2}>
         {filteredCompanies?.map((company: Company) => (
           <div key={company.id} onClick={() => handleCompanyClick(company.id)}>

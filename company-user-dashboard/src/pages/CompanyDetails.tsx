@@ -13,14 +13,14 @@ interface Company {
   industry: string;
   marketCap: number;
   domain: string;
-  logo?: string; // Optional logo URL
+  logo?: string; 
   ceoName: string;
 }
 
 const CompanyDetails = () => {
-  const { companyId } = useParams<{ companyId: string }>(); // Get the company ID from the URL
+  const { companyId } = useParams<{ companyId: string }>(); 
 
-  // Fetch company details
+  
   const {
     data: company,
     isLoading,
@@ -58,7 +58,7 @@ const CompanyDetails = () => {
         Company Details
       </Typography>
 
-      {/* Company Logo */}
+     
       {company?.logo && (
         <Box display="flex" justifyContent="center" mb={4}>
           <Avatar
@@ -69,7 +69,7 @@ const CompanyDetails = () => {
         </Box>
       )}
 
-      {/* Company Details */}
+      
       <Box>
         <Typography variant="h6">Name: {company?.name}</Typography>
         <Typography variant="body1">Domain: {company?.domain || 'N/A'}</Typography>

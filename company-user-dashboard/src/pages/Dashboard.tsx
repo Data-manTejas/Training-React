@@ -19,7 +19,7 @@ interface Company {
 }
 
 const Dashboard = () => {
-  // Fetch users
+ 
   const {
     data: users,
     isLoading: isLoadingUsers,
@@ -33,7 +33,7 @@ const Dashboard = () => {
     },
   });
 
-  // Fetch companies
+  
   const {
     data: companies,
     isLoading: isLoadingCompanies,
@@ -56,7 +56,7 @@ const Dashboard = () => {
     );
   }
 
-  // Show error message if either users or companies fetch fails
+  
   if (isErrorUsers || isErrorCompanies) {
     return (
       <Typography variant="h6" color="error" align="center">
@@ -71,7 +71,7 @@ const Dashboard = () => {
         Dashboard
       </Typography>
 
-      {/* Users Section */}
+      
       <Typography variant="h6" gutterBottom>
         Users
       </Typography>
@@ -82,12 +82,12 @@ const Dashboard = () => {
         {users.length}
       </Box>
 
-      {/* Companies Section */}
+     
       <Typography variant="h6" gutterBottom mt={4}>
         Companies
       </Typography>
       <Box display="flex" flexWrap="wrap" gap={2}>
-        {/* Display the number of companies */}
+        
         <Typography variant="body1">
           Total Companies: {companies?.length}
         </Typography>

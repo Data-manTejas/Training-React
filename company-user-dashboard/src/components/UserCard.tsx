@@ -5,14 +5,14 @@ interface User {
   name: string;
   email: string;
   company: string;
-  photo?: string; // Optional photo URL
+  photo?: string; 
 }
 
 const UserCard = ({ user }: { user: User }) => {
   return (
     <Card sx={{ minWidth: 275, maxWidth: 300, cursor: 'pointer' }}>
       <CardContent>
-        {/* User Photo */}
+        
         {user.photo && (
           <Avatar
             src={user.photo}
@@ -21,15 +21,15 @@ const UserCard = ({ user }: { user: User }) => {
           />
         )}
 
-        {/* User Name */}
+        
         <Typography variant="h6" component="div">
           {user.name}
         </Typography>
 
-        {/* User Email */}
+        
         <Typography color="text.secondary">{user.email}</Typography>
 
-        {/* User Company */}
+        
         <Typography variant="body2">
           Company: {user.company || 'N/A'}
         </Typography>

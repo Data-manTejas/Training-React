@@ -10,7 +10,7 @@ interface User {
   state: string;
   country: string;
   phone: string;
-  photo?: string; // Optional photo URL
+  photo?: string; 
 }
 
 interface UserContextType {

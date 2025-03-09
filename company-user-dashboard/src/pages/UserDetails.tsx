@@ -1,10 +1,10 @@
 import { Typography, Container, Box, CircularProgress, Avatar } from '@mui/material';
 import { useParams } from 'react-router-dom';
-import { useUserContext } from '../context/UserContext'; // Import useUserContext
+import { useUserContext } from '../context/UserContext'; 
 
 const UserDetails = () => {
-  const { userId } = useParams<{ userId: string }>(); // Get the user ID from the URL
-  const { selectedUser } = useUserContext(); // Get the selected user from context
+  const { userId } = useParams<{ userId: string }>(); 
+  const { selectedUser } = useUserContext(); 
 
   if (!selectedUser || selectedUser.id !== Number(userId)) {
     return (
@@ -20,7 +20,7 @@ const UserDetails = () => {
         User Details
       </Typography>
 
-      {/* User Photo */}
+     
       {selectedUser.photo && (
         <Box display="flex" justifyContent="center" mb={4}>
           <Avatar
@@ -31,7 +31,7 @@ const UserDetails = () => {
         </Box>
       )}
 
-      {/* User Details */}
+      
       <Box>
         <Typography variant="h6">Name: {selectedUser.name}</Typography>
         <Typography variant="body1">Email: {selectedUser.email}</Typography>
